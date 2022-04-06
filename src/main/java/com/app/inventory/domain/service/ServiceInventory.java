@@ -22,132 +22,6 @@ public class ServiceInventory implements ServicePort {
         this.dataBase = dataBase;
         this.mapper = mapper;
     }
-    +
-
-    9
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ---------   --------------------------------------------------------------------
-    -
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    -
-
-    -
 
     @Override
     public List<InventoryDto> getAllInventory() {
@@ -170,8 +44,8 @@ public class ServiceInventory implements ServicePort {
     }
 
     @Override
-    public List<InventoryDto> getlInventoryByType(long idTypeProducy) {
-        List<InventoryDto> response = mapper.toDto(dataBase.findInventoryByType(idTypeProducy));
+    public List<InventoryDto> getlInventoryByType(long idTypeProduct) {
+        List<InventoryDto> response = mapper.toDto(dataBase.findInventoryByType(idTypeProduct));
         if (response.isEmpty()){
             throw new ResourceNotFoundException("Inventory not found");
         }
@@ -202,16 +76,8 @@ public class ServiceInventory implements ServicePort {
         }
 
         long newQuantity = inventoryEntity.map(inventory -> inventory.getQuantity()-quantity).get();
-
         InventoryEntity response = dataBase.saveInventory(inventoryEntity.get().toBuilder().quantity(newQuantity).build());
 
         return mapper.toDto(response);
     }
 }
--Q
-Q-
-    Q-------
-Q
-
-Q
-                                                                                                                                                        1
