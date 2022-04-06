@@ -1,12 +1,13 @@
 package com.app.inventory.domain.port.out;
 
-import com.app.inventory.api.model.request.InventoryRequest;
 import com.app.inventory.domain.model.dto.InventoryDto;
 
 import java.util.List;
 
+/**
+ * interface to connect to domain service
+ */
 public interface ServicePort {
-
 
     public List<InventoryDto> getAllInventory();
 

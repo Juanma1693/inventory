@@ -7,6 +7,9 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
+/**
+ * mapper class to convert Entity to Dto and vice versa
+ */
 @Mapper(componentModel = "spring")
 public interface InventoryMapper {
 

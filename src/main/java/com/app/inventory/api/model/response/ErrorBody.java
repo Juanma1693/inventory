@@ -4,6 +4,9 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+/**
+ * model class to error handler
+ */
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

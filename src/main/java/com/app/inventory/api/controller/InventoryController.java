@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * inventory RestController management and consult service, more detail in http://host:port/swagger-ui/index.htm
+ */
 @RestController
 @RequestMapping("/inventory")
 @OpenAPIDefinition(
@@ -27,11 +30,18 @@ public class InventoryController {
 
     private ServicePort servicePort;
 
-
+    /**
+     * constructor InventoryController
+     * @param servicePort ServicePort
+     */
     InventoryController(ServicePort servicePort){
         this.servicePort = servicePort;
     }
 
+    /**
+     * Return all inventory
+     * @return list with all inventory, type List<InventoryDto>
+     */
     @GetMapping
     @Operation(summary = "Return all inventory")
     ResponseEntity<List<InventoryDto>> getAllInventory() {
@@ -39,6 +49,11 @@ public class InventoryController {
         return ResponseEntity.ok(response);
     }
 
+    /**
+     * returns inventory with specified id
+     * @param id id Inventory
+     * @return inventory type InventoryDto
+     */
     @GetMapping("/{id}")
     @Operation(summary = "returns inventory with specified id")
     ResponseEntity<InventoryDto> getlInventoryById(@PathVariable long id) {
@@ -48,6 +63,11 @@ public class InventoryController {
         return ResponseEntity.ok(response);
     }
 
+    /**
+     * returns inventory of the specified type
+     * @param idTypeProduct
+     * @return list with inventory of the specified type, type List<InventoryDto>
+     */
     @GetMapping("/type/{type}")
     @Operation(summary = "returns inventory of the specified type")
     ResponseEntity<List<InventoryDto>> getlInventoryByType(@PathVariable("type") long idTypeProduct) {
@@ -55,6 +75,11 @@ public class InventoryController {
         return ResponseEntity.ok(response);
     }
 
+    /**
+     * add products to inventory
+     * @param request InventoryRequest contains quantity idPacking idProduct
+     * @return inventory type InventoryDto
+     */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "add products to inventory")
     ResponseEntity<InventoryDto> sumProductsToInventory(@RequestBody @Valid InventoryRequest request) {
@@ -62,6 +87,11 @@ public class InventoryController {
         return ResponseEntity.ok(response);
     }
 
+    /**
+     * extract products to inventory
+     * @param request InventoryRequest contains quantity idPacking idProduct
+     * @return inventory type InventoryDto
+     */
     @PostMapping(value = "/extract", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "extract products to inventory")
     ResponseEntity<InventoryDto> extractProductsToInventory(@RequestBody @Valid InventoryRequest request) {
