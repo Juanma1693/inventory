@@ -12,7 +12,7 @@ public interface ServicePort {
 
     public InventoryDto getlInventoryById(long id);
 
-    public List<InventoryDto> getlInventoryByType(int idTypeProduct);
+    public List<InventoryDto> getlInventoryByType(long idTypeProduct);
 
     public InventoryDto sumProductsToInventory(long idProducto, long idPacking, int quantity);
 

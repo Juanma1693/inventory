@@ -1,19 +1,27 @@
 package com.app.inventory.api.model.request;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class InventoryRequest {
 
-    @Min(value = 1, message = "idProduct can't be less than 1")
+    @Positive(message = "idProduct must be greater than 0.")
     private long idProduct;
 
-    @Min(value = 1, message = "idProduct can't be less than 1")
+    @Positive(message = "idPacking must be greater than 0.")
     private long idPacking;
 
-    @Min(value = 1, message = "quantity can't be less than 1")
+    @Positive(message = "quantity must be greater than 0.")
     private int quantity;
 
 }
